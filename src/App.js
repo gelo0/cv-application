@@ -3,6 +3,7 @@ import uniqid from "uniqid";
 import CVForm from "./components/CVForm";
 import CVPreview from "./components/CVPreview";
 import ReactToPrint from 'react-to-print';
+import melon from './components/IMG_20220410_144751.jpg';
 
 class App extends React.Component {
   constructor(){
@@ -130,6 +131,37 @@ class App extends React.Component {
     })
   }
 
+  loadExample = () => {
+    this.setState({personalInfo: {
+      firstName: 'Melon',
+      lastName: 'Zbojak',
+      positionTitle: 'Intern',
+      adress: 'Pirenejska, Warsaw',
+      phoneNumber: '+48 555 555 555',
+      email: 'melon@zbojak.pl',
+      description: `My name is Melon and I'm a dog!`,
+      photoURL: melon
+      },
+      experiences: [{
+        id: uniqid(),
+        position: 'House Dog',
+        company: 'Home',
+        city: 'Warsaw',
+        from: '11/2021',
+        to: 'present'
+      }],
+      educations: [{
+        id: uniqid(),
+        name: 'Psiedszkole',
+        city: 'Warsaw',
+        degree: 'Participant',
+        subject: 'Basic obedience',
+        from: '01/2022',
+        to: '02/2022'
+      }] 
+    })
+  }
+
 
   render() {
 
@@ -148,6 +180,12 @@ class App extends React.Component {
           changeExperience={this.changeExperience}
           handleImage={this.handleImage}
         ></CVForm>
+        <button
+          id="example-btn"
+          onClick={this.loadExample}
+        >
+          Load Example
+        </button>
         <ReactToPrint
           trigger={() => {
             // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop

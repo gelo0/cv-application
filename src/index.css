@@ -141,7 +141,8 @@ button:active {
 	top:1px;
 }
 
-#print-btn {
+#print-btn,
+#example-btn {
   align-self: center;
   display: block;
   margin-left: auto;
